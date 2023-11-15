@@ -3,17 +3,26 @@
     "node": true,
     "es6": true
   },
-  "extends": ["plugin:prettier/recommended", "prettier", "eslint:recommended"],
+  "extends": [
+    "plugin:prettier/recommended",
+    "prettier",
+    "eslint:recommended",
+    "'plugin:@typescript-eslint/recommended'",
+    "plugin:import/errors"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2022,
     "sourceType": "module",
     "project": "tsconfig.json"
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "import", "prettier", "perfectionist", "unused-imports"],
   "rules": {
     "indent": ["error", 2, { "SwitchCase": 1 }],
     "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/no-explicit-any": "error"
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-empty-function": ["error", { "allow": ["arrowFunctions"] }],
+    "newline-before-return": ["error"],
+    "prettier/prettier": "error"
   }
 }
