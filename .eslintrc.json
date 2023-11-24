@@ -14,7 +14,7 @@
   "parserOptions": {
     "ecmaVersion": 2022,
     "sourceType": "module",
-    "project": "tsconfig.json"
+    "project": "./tsconfig.json"
   },
   "plugins": ["@typescript-eslint", "import", "prettier", "perfectionist", "unused-imports"],
   "rules": {
@@ -24,5 +24,10 @@
     "@typescript-eslint/no-empty-function": ["error", { "allow": ["arrowFunctions"] }],
     "newline-before-return": ["error"],
     "prettier/prettier": "error"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
   }
 }
