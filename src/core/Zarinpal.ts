@@ -1,7 +1,10 @@
-import { BaseAPI } from './BaseApi';
+import { PaymentGateWay } from '../resources';
+import { ClientConfig } from '../types';
 
-// interface ApiType {
+export class Zarinpal {
+  pg: PaymentGateWay;
 
-// }
-
-export class Zarinpal extends BaseAPI {}
+  constructor(config: ClientConfig) {
+    this.pg = new PaymentGateWay(config);
+  }
+}

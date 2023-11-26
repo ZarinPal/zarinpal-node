@@ -18,6 +18,7 @@ export abstract class BaseAPI {
 
       return data;
     } catch (e) {
+      // TODO: handle error
       console.log('error');
       console.log(e);
     }
