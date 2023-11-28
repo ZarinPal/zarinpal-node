@@ -1,10 +1,10 @@
-import { PaymentGateWay } from '../resources';
+import { PG } from '../resources';
 import { ClientConfig } from '../types';
 
 export class Zarinpal {
-  pg: PaymentGateWay;
+  pg: PG;
 
   constructor(config: ClientConfig) {
-    this.pg = new PaymentGateWay(config);
+    this.pg = new PG(config);
   }
 }

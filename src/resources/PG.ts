@@ -1,12 +1,14 @@
 import { BaseAPI } from '../core/BaseApi';
 import { ClientConfig } from '../types';
+import { PaymentGateWay } from '../types';
 
-export class PaymentGateWay extends BaseAPI {
+export class PG extends BaseAPI {
   constructor(config: ClientConfig) {
     super(config);
   }
 
-  new() {
+  async new(args: PaymentGateWay['New']) {
     console.log('new request');
+    console.log(args);
   }
 }

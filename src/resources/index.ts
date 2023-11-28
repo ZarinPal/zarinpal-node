@@ -1,2 +1,2 @@
-import { PaymentGateWay } from './PaymentGateway';
-export { PaymentGateWay };
+import { PG } from './PG';
+export { PG };

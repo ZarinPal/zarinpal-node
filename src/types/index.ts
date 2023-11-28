@@ -1,6 +1,7 @@
-import { HeadersInit } from 'node-fetch';
 export interface ClientConfig {
-  headers?: HeadersInit;
+  // FIXME: fix this
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  headers?: any;
   type?: 'rest' | 'graphql';
 }
 
@@ -10,7 +11,7 @@ interface MetaData {
   order_id?: string;
 }
 
-export interface PGNewArgs {
+export interface PaymentGateWayNewArgs {
   merchant_id: string;
   amount: number;
   description: string;
@@ -19,7 +20,7 @@ export interface PGNewArgs {
   currency?: 'IRR' | 'IRT';
 }
 
-interface PGNewData {
+interface PaymentGateWayNewData {
   code: number;
   message: string;
   authority: string;
@@ -27,14 +28,14 @@ interface PGNewData {
   fee: number;
 }
 
-export interface PGNew {
-  data: PGNewData;
+export interface PaymentGateWayNew {
+  data: PaymentGateWayNewData;
 }
 
-export interface PG {
-  new: PGNew;
+export interface PaymentGateWay {
+  New: PaymentGateWayNew;
 }
 
-export interface ArgsPG {
-  new: PGNewArgs;
+export interface PaymentGateWayArgs {
+  New: PaymentGateWayNewArgs;
 }
