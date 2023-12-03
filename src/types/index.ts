@@ -1,3 +1,4 @@
+import { ApiError, HttpError, ValidationError } from './../core/Error';
 export interface ClientConfig {
   // FIXME: fix this
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -28,13 +29,29 @@ interface PaymentGateWayNew {
   fee: number;
 }
 
+interface PaymentGateWayVerifyArgs {
+  merchant_id: string;
+  amount: number;
+  authority: string;
+}
+
+interface PaymentGateWayVerify {
+  code: number;
+  ref_id: number;
+  card_pan: string;
+  card_hash: string;
+  fee_type: string;
+  fee: number;
+}
+
 export interface PaymentGateWay {
   New: BaseResponse<PaymentGateWayNew>;
+  Verify: BaseResponse<PaymentGateWayVerify>;
 }
 
 export interface PaymentGateWayArgs {
   New: PaymentGateWayNewArgs;
-  Start: PaymentGateWayStartArgs;
+  Verify: PaymentGateWayVerifyArgs;
 }
 
 export interface BaseResponse<T> {
@@ -48,6 +65,4 @@ export interface ResponseError {
   validations?: object[];
 }
 
-export interface PaymentGateWayStartArgs {
-  authority: string;
-}
+export type ZarinpalError = ApiError | HttpError | ValidationError;

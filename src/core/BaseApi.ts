@@ -47,5 +47,8 @@ export abstract class BaseAPI {
     if (error.code === -38) {
       throw new ApiError(error.code, error.message);
     }
+    if (error.code === -51) {
+      throw new ValidationError(error.code, error.message);
+    }
   }
 }

@@ -1,3 +1,4 @@
+import { ZarinpalError } from './../types/index';
 import { BaseAPI } from '../core/BaseApi';
 import { ClientConfig } from '../types';
 import { PaymentGateWay, PaymentGateWayArgs } from '../types';
@@ -7,7 +8,7 @@ export class PG extends BaseAPI {
     super(config);
   }
 
-  async newPayment(body: PaymentGateWayArgs['New']): Promise<string> {
+  async newPayment(body: PaymentGateWayArgs['New']): Promise<string | ZarinpalError> {
     try {
       const response: PaymentGateWay['New'] = await this.post(
         'https://api.zarinpal.com/pg/v4/payment/request.json',
@@ -19,7 +20,26 @@ export class PG extends BaseAPI {
       console.log('error in new pg');
       console.log(e);
 
-      return e as string;
+      return e as ZarinpalError;
+    }
+  }
+
+  async verify(
+    body: PaymentGateWayArgs['Verify'],
+  ): Promise<PaymentGateWay['Verify'] | ZarinpalError> {
+    try {
+      const response: PaymentGateWay['Verify'] = await this.post(
+        'https://api.zarinpal.com/pg/v4/payment/verify.json',
+        body,
+      );
+      console.log(response);
+
+      return response;
+    } catch (e: unknown) {
+      console.log('error in verify pg');
+      console.log(e);
+
+      return e as ZarinpalError;
     }
   }
 }
