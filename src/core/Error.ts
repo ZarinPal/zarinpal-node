@@ -1,39 +1,38 @@
-interface ErrorObject {
-  message: string;
-  validation?: Array<{ [key: string]: string | number }>;
-  location?: Array<{ [key: string]: string | number }>;
-}
+// interface ErrorObject {
+//   message: string;
+//   validation?: Array<{ [key: string]: string | number }>;
+//   location?: Array<{ [key: string]: string | number }>;
+// }
 
 class BaseError {
   constructor(
     public message: string,
-    public error: ErrorObject[],
+    // public error: ErrorObject[],
   ) {}
 }
 
 export class HttpError extends BaseError {
-  constructor(
-    public message: string,
-    public error: ErrorObject[],
-  ) {
-    super(message, error);
+  constructor(public message: string) {
+    super(message);
   }
 }
 
 export class ApiError extends BaseError {
   constructor(
+    public code: number,
     public message: string,
-    public error: ErrorObject[],
+    // public error: ErrorObject[],
   ) {
-    super(message, error);
+    super(message);
   }
 }
 
 export class ValidationError extends BaseError {
   constructor(
+    public code: number,
     public message: string,
-    public error: ErrorObject[],
+    // public error: ErrorObject[],
   ) {
-    super(message, error);
+    super(message);
   }
 }

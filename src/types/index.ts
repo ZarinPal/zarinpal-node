@@ -20,7 +20,7 @@ export interface PaymentGateWayNewArgs {
   currency?: 'IRR' | 'IRT';
 }
 
-interface PaymentGateWayNewData {
+interface PaymentGateWayNew {
   code: number;
   message: string;
   authority: string;
@@ -28,14 +28,21 @@ interface PaymentGateWayNewData {
   fee: number;
 }
 
-export interface PaymentGateWayNew {
-  data: PaymentGateWayNewData;
-}
-
 export interface PaymentGateWay {
-  New: PaymentGateWayNew;
+  New: BaseResponse<PaymentGateWayNew>;
 }
 
 export interface PaymentGateWayArgs {
   New: PaymentGateWayNewArgs;
+}
+
+export interface BaseResponse<T> {
+  data: T;
+  error: ResponseError;
+}
+
+export interface ResponseError {
+  code: number;
+  message: string;
+  validations?: object[];
 }
