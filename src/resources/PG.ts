@@ -1,4 +1,4 @@
-import { ZarinpalError } from './../types/index';
+import { ZarinpalError } from '../types/index';
 import { BaseAPI } from '../core/BaseApi';
 import { ClientConfig } from '../types';
 import { PaymentGateWay, PaymentGateWayArgs } from '../types';
