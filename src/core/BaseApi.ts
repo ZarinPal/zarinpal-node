@@ -41,14 +41,13 @@ export abstract class BaseAPI {
   }
 
   private errorHandler(error: ResponseError) {
-    if (error.code === -9) {
-      throw new ValidationError(error.code, error.message);
-    }
-    if (error.code === -38) {
-      throw new ApiError(error.code, error.message);
-    }
-    if (error.code === -51) {
-      throw new ValidationError(error.code, error.message);
+    switch (error.code) {
+      case -9:
+        throw new ValidationError(error.code, error.message);
+      case -38:
+        throw new ApiError(error.code, error.message);
+      case -51:
+        throw new ValidationError(error.code, error.message);
     }
   }
 }
