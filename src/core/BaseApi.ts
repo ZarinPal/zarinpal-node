@@ -35,7 +35,8 @@ export abstract class BaseAPI {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       console.log('not axios error');
-      console.log(e.response.data);
+      console.log(e);
+      // console.log(e.response.data);
     }
   }
 

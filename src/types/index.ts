@@ -34,15 +34,20 @@ export interface PaymentGateWay {
 
 export interface PaymentGateWayArgs {
   New: PaymentGateWayNewArgs;
+  Start: PaymentGateWayStartArgs;
 }
 
 export interface BaseResponse<T> {
   data: T;
-  error: ResponseError;
+  errors: ResponseError;
 }
 
 export interface ResponseError {
   code: number;
   message: string;
   validations?: object[];
+}
+
+export interface PaymentGateWayStartArgs {
+  authority: string;
 }
